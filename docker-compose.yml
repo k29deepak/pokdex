@@ -1,0 +1,11 @@
+version: '2'
+services:
+  pokemon:
+    build: .
+    hostname: pokedex
+    working_dir: /opt/project
+    ports:
+      - "8000:8000"
+    volumes:
+      - "${PWD}/app:/opt/project"
+    tty: true
