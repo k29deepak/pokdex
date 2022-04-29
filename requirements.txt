@@ -1,0 +1,6 @@
+fastapi
+ndg-httpsclient
+requests
+pyopenssl
+pyasn1
+uvicorn[standard]
