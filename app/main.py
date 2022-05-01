@@ -5,10 +5,12 @@ import json
 app = FastAPI()
 
 def fetch_pokemon_data(name):
-    # resp = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{name}").json
-
-    resp = pokemon_db().get(name)
-
+    """
+    Fetch pokemon data from PokeAPI. Tranform the output to desired format.
+    params:
+        name string: Name of pokemon to fetch data.
+    """
+    resp = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{name}").json
 
     if not resp:
         raise HTTPException(status_code=404,
@@ -30,10 +32,6 @@ def fetch_pokemon_data(name):
                     "habitat": habitat,
                     "isLegendary": resp.get("is_legendary")}
     return new_response
-
-
-def pokemon_db():
-    return json.load(open('poke_db.json'))
 
 
 @app.get("/pokemon/{name}")
