@@ -1,4 +1,4 @@
-FROM python3
+FROM faucet/python3
 
 WORKDIR /opt
 
